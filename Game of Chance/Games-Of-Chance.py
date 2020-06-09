@@ -40,7 +40,7 @@ def cho_han(bet, guess):
   num1 = random.randint(1,6)
   num2 = random.randint(1,6)
   total = num1 + num2
-  print("the sum of the to dice is " +str(total))
+  print("the sum of the two dice is " +str(total))
   if total % 2 !=0:
       result = 'Odd'
   else:
