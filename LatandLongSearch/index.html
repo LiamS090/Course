@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lat and Long Search</title>
+  <link rel="stylesheet" type="text/css" href="myStyles.css">
+  <meta charset="utf-8">
+  <meta name="description" content="AJAX/PHP/CURL/JSON example">
+	<meta name="author" content="Liam Scott">
+</head>
+<body>
+
+    <h1>Enter a Lat and Long to find where in the world it is...</h1>
+  <form action="" method="get">
+          
+          <input id="lat" type="text" name="lat" placeholder="enter latitude..." />
+          <input id="lng" type="text" name="lng" placeholder="enter Longitude..." />
+          <br />
+          <br>
+          <br>
+          <button type="submit" name="submit" id="search">Search</button>
+  </form>
+  <br />
+
+  <table id= "data">
+
+    <tr>
+      <td align="center">
+        Country Code: 
+      </td>
+      <td id="Code">
+        
+      </td>
+
+    </tr>
+
+    <tr>
+      <td align="center">
+        Languages: 
+      </td>
+      <td id="Lang">
+        
+      </td>
+
+    </tr>
+
+    <tr>
+      <td align="center">
+        Country Name: 
+      </td>
+      <td id="Name">
+        
+      </td>
+
+    </tr>
+
+</body>
+<script type="application/javascript" src="jquery-2.2.3.min.js"></script>
+<script type="application/javascript" src="script.js"></script>
+</html>
