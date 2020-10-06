@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
 
     <head>
         <title>Gazetteer</title>
-        <link rel=icon href="pictures/favicon.ico">
+        <link rel=icon href="images/favicon.ico">
         <meta name="keywords" content="country, map, weather, php, api, population">
         <meta name="description" content="Gazetteer Liam Scott Project">
         <meta charset="UTF-8">
@@ -16,10 +16,12 @@
         <link rel="stylesheet" href="Leaflet/leaflet.css" />
       <!--  MY CSS  -->
         <link rel="stylesheet" type="text/css" href="CSS/MyStyles.css">
+      <!--  Adding GeoJSON  -->
+        <link rel="location" type="application/json" href="countries.json"/>
 
     </head>
 
-    <body onload="init()">
+  <body onload="init()">
 
 
 
@@ -284,7 +286,6 @@
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabwe</option>
            
-        <h4>Country:</h4><h4 id="txtCountry"></h4>
 
       </select>
           <button><a class="toggle" href="#information">Country Information</a></button>
@@ -295,7 +296,7 @@
 
             <tr>
               <td>
-                Country: 
+                Country:
               </td>
               <td id="txtCountry">
               </td>
@@ -319,17 +320,17 @@
 
             <tr>
               <td>
-                FipsCode: 
+                Currency code: 
               </td>
-              <td id="txtfips">
+              <td id="currency">
               </td>
             </tr>
           
             <tr>
               <td>
-                Iso 3 Code: 
+                Country Code: 
               </td>
-              <td id="txtiso">
+              <td id="txtCode">
               </td>
             </tr>
 
@@ -349,12 +350,96 @@
               </td>
             </tr>
 
+            <tr>
+              <td><br></td>
+            </tr>
+
+            <tr>
+              <td>
+                Time:
+              </td>
+              <td id="Time">
+              </td>
+            </tr>
+  
+            <tr>
+              <td>
+                GMT offset:
+              </td>
+              <td id="TimeZone">
+              </td>
+            </tr>
+  
+            <tr>
+              <td>
+                Sunrise: 
+              </td>
+              <td id="Sunrise">
+              </td>
+            </tr>
+  
+            <tr>
+              <td>
+                Sunset: 
+              </td>
+              <td id="Sunset">
+              </td>
+            </tr>
+            
+            <tr>
+              <td><br></td>
+            </tr>
+
+            <tr>
+              <td>Major Citys:</td>
+            </tr>
+  
+            <tr>
+              <td id="city01"></td>
+              <td>Population:</td>
+              <td id="pop01"></td>
+            </tr>
+  
+            <tr>
+              <td id="city02"></td>
+              <td>Population:</td>
+              <td id="pop02"></td>
+            </tr>
+  
+            <tr>
+              <td id="city03"></td>
+              <td>Population:</td>
+              <td id="pop03"></td>
+            </tr>
+
+            <tr>
+              <td id="city04"></td>
+              <td>Population:</td>
+              <td id="pop04"></td>
+            </tr>
+
+            <tr>
+              <td id="city05"></td>
+              <td>Population:</td>
+              <td id="pop05"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+          </table> 
         </div>
 
       <!--JAVASCRIPT IMPORTS-->
         <script src="JavaScript/jquery-2.2.3.min.js" type="text/JavaScript"></script>
         <script src="Bootstrap/js/bootstrap.js" type="text/JavaScript"></script> 
         <script src="Leaflet/leaflet.js" type="text/JavaScript"></script>
+        <script src="Leaflet/spin.min.js" type="text/JavaScript"></script>
+        <script src="Leaflet/leaflet.spin.min.js" type ="text/JavaScript"></script>
+        <script src="Leaflet/owm.js"></script>
         <script src="JavaScript/script.js" type="text/JavaScript"></script>
-    </body>
-  </html>
+
+
+  </body>
+</html>
