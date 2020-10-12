@@ -207,8 +207,10 @@ $('#myModal').on('shown.bs.modal', function () {
                   console.log(countryCode);
                   if (result.status.name == "ok") {
                     
-                    
-                    var capital = (result['data']['cities']['features'][0]['properties']['name']);
+                    var link = "https://";
+                    var capital = result['data']['cities']['features'][0]['properties']['name'];
+                    var capitalLink = result['data']['cities']['features'][0]['properties']['wikipedia'];
+                    document.getElementById("capLink").setAttribute("href",link+capitalLink);
                     $('#cap').html(capital);
                     var pop1 = numeral(result['data']['cities']['features'][0]['properties']['population']).format('0,0');
                     $('#capPop').html(pop1);
@@ -221,6 +223,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     map.fitBounds(markerBounds, {maxZoom: 6});
 
                     var city1 = (result['data']['cities']['features'][1]['properties']['name'])
+                    var city1Link = result['data']['cities']['features'][1]['properties']['wikipedia'];
+                    document.getElementById('cityLink1').setAttribute('href',link+city1Link);
                     $('#city01').html(city1);
                     var pop01 = numeral(result['data']['cities']['features'][1]['properties']['population']).format('0,0');
                     $('#pop01').html(pop01);
@@ -230,6 +234,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker1.bindTooltip(city1).openTooltip();
 
                     var city2 = (result['data']['cities']['features'][2]['properties']['name']);
+                    var city2Link = result['data']['cities']['features'][2]['properties']['wikipedia'];
+                    document.getElementById('cityLink2').setAttribute('href',link+city2Link);
                     $('#city02').html(city2);
                     var pop02 = numeral(result['data']['cities']['features'][2]['properties']['population']).format('0,0');
                     $('#pop02').html(pop02);
@@ -239,6 +245,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker2.bindTooltip(city2).openTooltip();
 
                     var city3 = (result['data']['cities']['features'][3]['properties']['name']);
+                    var city3Link = result['data']['cities']['features'][3]['properties']['wikipedia'];
+                    document.getElementById('cityLink3').setAttribute('href',link+city3Link);
                     $('#city03').html(city3);
                     var pop03 = numeral(result['data']['cities']['features'][3]['properties']['population']).format('0,0');
                     $('#pop03').html(pop03);
@@ -248,6 +256,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker3.bindTooltip(city3).openTooltip();
 
                     var city4 = (result['data']['cities']['features'][4]['properties']['name']);
+                    var city4Link = result['data']['cities']['features'][4]['properties']['wikipedia'];
+                    document.getElementById('cityLink4').setAttribute('href',link+city4Link);
                     $('#city04').html(city4);
                     var pop04 = numeral(result['data']['cities']['features'][4]['properties']['population']).format('0,0');
                     $('#pop04').html(pop04);
@@ -257,6 +267,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker4.bindTooltip(city4).openTooltip();
 
                     var city5 = (result['data']['cities']['features'][5]['properties']['name']);
+                    var city5Link = result['data']['cities']['features'][5]['properties']['wikipedia'];
+                    document.getElementById('cityLink5').setAttribute('href',link+city5Link);
                     $('#city05').html(city5);
                     var pop05 = numeral(result['data']['cities']['features'][5]['properties']['population']).format('0,0');
                     $('#pop05').html(pop05);
@@ -266,6 +278,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker5.bindTooltip(city5).openTooltip();
 
                     var city6 = (result['data']['cities']['features'][6]['properties']['name']);
+                    var city6Link = result['data']['cities']['features'][6]['properties']['wikipedia'];
+                    document.getElementById('cityLink6').setAttribute('href',link+city6Link);
                     $('#city06').html(city6);
                     var pop06 = numeral(result['data']['cities']['features'][6]['properties']['population']).format('0,0');
                     $('#pop06').html(pop06);
@@ -275,6 +289,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker6.bindTooltip(city6).openTooltip();
 
                     var city7 = (result['data']['cities']['features'][7]['properties']['name']);
+                    var city7Link = result['data']['cities']['features'][7]['properties']['wikipedia'];
+                    document.getElementById('cityLink7').setAttribute('href',link+city7Link);
                     $('#city07').html(city7);
                     var pop07 = numeral(result['data']['cities']['features'][7]['properties']['population']).format('0,0');
                     $('#pop07').html(pop07);
@@ -284,6 +300,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker7.bindTooltip(city7).openTooltip();
 
                     var city8 = (result['data']['cities']['features'][8]['properties']['name']);
+                    var city8Link = result['data']['cities']['features'][8]['properties']['wikipedia'];
+                    document.getElementById('cityLink8').setAttribute('href',link+city8Link);
                     $('#city08').html(city8);
                     var pop08 = numeral(result['data']['cities']['features'][8]['properties']['population']).format('0,0');
                     $('#pop08').html(pop08);
@@ -293,6 +311,8 @@ $('#myModal').on('shown.bs.modal', function () {
                     cityMarker8.bindTooltip(city8).openTooltip();
 
                     var city9 = (result['data']['cities']['features'][9]['properties']['name']);
+                    var city9Link = result['data']['cities']['features'][9]['properties']['wikipedia'];
+                    document.getElementById('cityLink9').setAttribute('href',link+city9Link);
                     $('#city09').html(city9);
                     var pop09 = numeral(result['data']['cities']['features'][9]['properties']['population']).format('0,0');
                     $('#pop09').html(pop09);
@@ -335,8 +355,6 @@ $('#myModal').on('shown.bs.modal', function () {
                         var m1 = d1.getMinutes();
                         m1 = checkTime(m1);
                         $('#Sunset').html(h1 + ":" + m1)
-
-                        map.spin(false);
                         
                       }
                       // wiki info
@@ -355,25 +373,23 @@ $('#myModal').on('shown.bs.modal', function () {
                           console.log(result);
         
                           if (result.status.name == "ok") {
-        
+                            var link = "http://"        
                             $('#title0').html(result['data'][0]['title']);
                             $('#summary0').html(result['data'][0]['summary']);
                             var link0 = result['data'][0]['wikipediaUrl'];
-                            var link00 = "http://";
-                            document.getElementById('link0').setAttribute('href', {link00, '+' link0}); 
+                            document.getElementById("link00").setAttribute("href",link+link0);
                             $('#link0').html(link0);
-                            console.log(link0);
 
                             $('#title1').html(result['data'][1]['title']);
                             $('#summary1').html(result['data'][1]['summary']);
                             var link1 = result['data'][1]['wikipediaUrl'];
-                            document.getElementById("link01").setAttribute("href",link1);
+                            document.getElementById("link01").setAttribute("href",link+link1);
                             $('#link1').html(link1);
 
                             $('#title2').html(result['data'][2]['title']);
                             $('#summary2').html(result['data'][2]['summary']);
                             var link2 = result['data'][2]['wikipediaUrl'];
-                            document.getElementById("link02").setAttribute("href",link2);
+                            document.getElementById("link02").setAttribute("href",link+link2);
                             $('#link2').html(link2);
 
                             map.spin(false);
@@ -397,20 +413,6 @@ $('#myModal').on('shown.bs.modal', function () {
   });
 
   
-  // Listen for click events
-  document.addEventListener('click', function (event) {
-  
-    // Make sure clicked element is our toggle
-    if (!event.target.classList.contains('toggle')) return;
-    event.preventDefault();
-  
-  
-    var content = document.querySelector(event.target.hash);
-    if (!content) return;
-    toggle(content);
-  
-  }, false);
-
   //displaying country infomration when country is clicked
   map.on('click', function(e) {
     map.spin(true);
@@ -447,6 +449,11 @@ $('#myModal').on('shown.bs.modal', function () {
           success: function(result) {
     
             console.log(result);
+            north = result['data'][0]['north'];
+            south = result['data'][0]['south'];
+            east = result['data'][0]['east'];
+            west = result['data'][0]['west'];
+            console.log(north);
     
             if (result.status.name == "ok") {
 
@@ -476,8 +483,11 @@ $('#myModal').on('shown.bs.modal', function () {
                 console.log(result);
                 console.log(countryCode);
                 if (result.status.name == "ok") {
-        
+
+                  var link = "http://"
                   var capital = (result['data']['cities']['features'][0]['properties']['name']);
+                  var capitalLink = result['data']['cities']['features'][0]['properties']['wikipedia'];
+                  document.getElementById("capLink").setAttribute("href",link+capitalLink);
                   $('#cap').html(capital);
                   var pop1 = numeral(result['data']['cities']['features'][0]['properties']['population']).format('0,0');
                   $('#capPop').html(pop1);
@@ -487,6 +497,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   capMarker.bindTooltip(capital).openTooltip();
 
                   var city1 = (result['data']['cities']['features'][1]['properties']['name'])
+                  var city1Link = result['data']['cities']['features'][1]['properties']['wikipedia'];
+                  document.getElementById('cityLink1').setAttribute('href',link+city1Link);
                   $('#city01').html(city1);
                   var pop01 = numeral(result['data']['cities']['features'][1]['properties']['population']).format('0,0');
                   $('#pop01').html(pop01);
@@ -496,6 +508,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker1.bindTooltip(city1).openTooltip();
 
                   var city2 = (result['data']['cities']['features'][2]['properties']['name']);
+                  var city2Link = result['data']['cities']['features'][2]['properties']['wikipedia'];
+                  document.getElementById('cityLink2').setAttribute('href',link+city2Link);
                   $('#city02').html(city2);
                   var pop02 = numeral(result['data']['cities']['features'][2]['properties']['population']).format('0,0');
                   $('#pop02').html(pop02);
@@ -505,6 +519,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker2.bindTooltip(city2).openTooltip();
 
                   var city3 = (result['data']['cities']['features'][3]['properties']['name']);
+                  var city3Link = result['data']['cities']['features'][3]['properties']['wikipedia'];
+                  document.getElementById('cityLink3').setAttribute('href',link+city3Link);
                   $('#city03').html(city3);
                   var pop03 = numeral(result['data']['cities']['features'][3]['properties']['population']).format('0,0');
                   $('#pop03').html(pop03);
@@ -514,6 +530,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker3.bindTooltip(city3).openTooltip();
 
                   var city4 = (result['data']['cities']['features'][4]['properties']['name']);
+                  var city4Link = result['data']['cities']['features'][4]['properties']['wikipedia'];
+                  document.getElementById('cityLink4').setAttribute('href',link+city4Link);
                   $('#city04').html(city4);
                   var pop04 = numeral(result['data']['cities']['features'][4]['properties']['population']).format('0,0');
                   $('#pop04').html(pop04);
@@ -523,6 +541,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker4.bindTooltip(city4).openTooltip();
 
                   var city5 = (result['data']['cities']['features'][5]['properties']['name']);
+                  var city5Link = result['data']['cities']['features'][5]['properties']['wikipedia'];
+                  document.getElementById('cityLink5').setAttribute('href',link+city5Link);
                   $('#city05').html(city5);
                   var pop05 = numeral(result['data']['cities']['features'][5]['properties']['population']).format('0,0');
                   $('#pop05').html(pop05);
@@ -532,6 +552,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker5.bindTooltip(city5).openTooltip();
 
                   var city6 = (result['data']['cities']['features'][6]['properties']['name']);
+                  var city6Link = result['data']['cities']['features'][6]['properties']['wikipedia'];
+                  document.getElementById('cityLink6').setAttribute('href',link+city6Link);
                   $('#city06').html(city6);
                   var pop06 = numeral(result['data']['cities']['features'][6]['properties']['population']).format('0,0');
                   $('#pop06').html(pop06);
@@ -541,6 +563,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker6.bindTooltip(city6).openTooltip();
 
                   var city7 = (result['data']['cities']['features'][7]['properties']['name']);
+                  var city7Link = result['data']['cities']['features'][7]['properties']['wikipedia'];
+                  document.getElementById('cityLink7').setAttribute('href',link+city7Link);
                   $('#city07').html(city7);
                   var pop07 = numeral(result['data']['cities']['features'][7]['properties']['population']).format('0,0');
                   $('#pop07').html(pop07);
@@ -550,6 +574,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker7.bindTooltip(city7).openTooltip();
 
                   var city8 = (result['data']['cities']['features'][8]['properties']['name']);
+                  var city8Link = result['data']['cities']['features'][8]['properties']['wikipedia'];
+                  document.getElementById('cityLink8').setAttribute('href',link+city8Link);
                   $('#city08').html(city8);
                   var pop08 = numeral(result['data']['cities']['features'][8]['properties']['population']).format('0,0');
                   $('#pop08').html(pop08);
@@ -559,6 +585,8 @@ $('#myModal').on('shown.bs.modal', function () {
                   cityMarker8.bindTooltip(city8).openTooltip();
 
                   var city9 = (result['data']['cities']['features'][9]['properties']['name']);
+                  var city9Link = result['data']['cities']['features'][9]['properties']['wikipedia'];
+                  document.getElementById('cityLink9').setAttribute('href',link+city9Link);
                   $('#city09').html(city9);
                   var pop09 = numeral(result['data']['cities']['features'][9]['properties']['population']).format('0,0');
                   $('#pop09').html(pop09);
@@ -601,10 +629,48 @@ $('#myModal').on('shown.bs.modal', function () {
                       var m1 = d1.getMinutes();
                       m1 = checkTime(m1);
                       $('#Sunset').html(h1 + ":" + m1)
-
-                      map.spin(false);
-                      
+                     
                     }
+                       // wiki info
+                    $.ajax({
+                      url: "PHP/getWikiInfo.php",
+                      type: 'POST',
+                      dataType: 'json',
+                      data: {
+                        north: north,
+                        south: south,
+                        east: east,
+                        west: west,
+                      },
+                      success: function(result) {
+    
+                        console.log(result);
+        
+                        if (result.status.name == "ok") {
+                          var link = "http://"        
+                          $('#title0').html(result['data'][0]['title']);
+                          $('#summary0').html(result['data'][0]['summary']);
+                          var link0 = result['data'][0]['wikipediaUrl'];
+                          document.getElementById("link00").setAttribute("href",link+link0);
+                          $('#link0').html(link0);
+
+                          $('#title1').html(result['data'][1]['title']);
+                          $('#summary1').html(result['data'][1]['summary']);
+                          var link1 = result['data'][1]['wikipediaUrl'];
+                          document.getElementById("link01").setAttribute("href",link+link1);
+                          $('#link1').html(link1);
+
+                          $('#title2').html(result['data'][2]['title']);
+                          $('#summary2').html(result['data'][2]['summary']);
+                          var link2 = result['data'][2]['wikipediaUrl'];
+                          document.getElementById("link02").setAttribute("href",link+link2);
+                          $('#link2').html(link2);
+
+                          map.spin(false);
+                           
+                        }
+                      }
+                    })   
                   }
                 })
               }
@@ -629,6 +695,11 @@ $('#myModal').on('shown.bs.modal', function () {
         success: function(result) {
   
           console.log(result);
+          north = result['data'][0]['north'];
+          south = result['data'][0]['south'];
+          east = result['data'][0]['east'];
+          west = result['data'][0]['west'];
+          console.log(north);
   
           if (result.status.name == "ok") {
 
@@ -661,7 +732,10 @@ $('#myModal').on('shown.bs.modal', function () {
               console.log(countryCode);
               if (result.status.name == "ok") {
       
+                var link = "http://"
                 var capital = (result['data']['cities']['features'][0]['properties']['name']);
+                var capitalLink = result['data']['cities']['features'][0]['properties']['wikipedia'];
+                document.getElementById("capLink").setAttribute("href",link+capitalLink);
                 $('#cap').html(capital);
                 var pop1 = numeral(result['data']['cities']['features'][0]['properties']['population']).format('0,0');
                 $('#capPop').html(pop1);
@@ -669,11 +743,10 @@ $('#myModal').on('shown.bs.modal', function () {
                 var lng1 = (result['data']['cities']['features'][0]['geometry']['coordinates'][0]);
                 capMarker.setLatLng([lat1, lng1]).update();
                 capMarker.bindTooltip(capital).openTooltip();
-                var latLngs = [ capMarker.getLatLng() ];
-                var markerBounds = L.latLngBounds(latLngs);
-                map.flyToBounds(markerBounds, {maxZoom: 6});
 
                 var city1 = (result['data']['cities']['features'][1]['properties']['name'])
+                var city1Link = result['data']['cities']['features'][1]['properties']['wikipedia'];
+                document.getElementById('cityLink1').setAttribute('href',link+city1Link);
                 $('#city01').html(city1);
                 var pop01 = numeral(result['data']['cities']['features'][1]['properties']['population']).format('0,0');
                 $('#pop01').html(pop01);
@@ -683,6 +756,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker1.bindTooltip(city1).openTooltip();
 
                 var city2 = (result['data']['cities']['features'][2]['properties']['name']);
+                var city2Link = result['data']['cities']['features'][2]['properties']['wikipedia'];
+                document.getElementById('cityLink2').setAttribute('href',link+city2Link);
                 $('#city02').html(city2);
                 var pop02 = numeral(result['data']['cities']['features'][2]['properties']['population']).format('0,0');
                 $('#pop02').html(pop02);
@@ -692,6 +767,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker2.bindTooltip(city2).openTooltip();
 
                 var city3 = (result['data']['cities']['features'][3]['properties']['name']);
+                var city3Link = result['data']['cities']['features'][3]['properties']['wikipedia'];
+                document.getElementById('cityLink3').setAttribute('href',link+city3Link);
                 $('#city03').html(city3);
                 var pop03 = numeral(result['data']['cities']['features'][3]['properties']['population']).format('0,0');
                 $('#pop03').html(pop03);
@@ -701,6 +778,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker3.bindTooltip(city3).openTooltip();
 
                 var city4 = (result['data']['cities']['features'][4]['properties']['name']);
+                var city4Link = result['data']['cities']['features'][4]['properties']['wikipedia'];
+                document.getElementById('cityLink4').setAttribute('href',link+city4Link);
                 $('#city04').html(city4);
                 var pop04 = numeral(result['data']['cities']['features'][4]['properties']['population']).format('0,0');
                 $('#pop04').html(pop04);
@@ -710,6 +789,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker4.bindTooltip(city4).openTooltip();
 
                 var city5 = (result['data']['cities']['features'][5]['properties']['name']);
+                var city5Link = result['data']['cities']['features'][5]['properties']['wikipedia'];
+                document.getElementById('cityLink5').setAttribute('href',link+city5Link);
                 $('#city05').html(city5);
                 var pop05 = numeral(result['data']['cities']['features'][5]['properties']['population']).format('0,0');
                 $('#pop05').html(pop05);
@@ -719,6 +800,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker5.bindTooltip(city5).openTooltip();
 
                 var city6 = (result['data']['cities']['features'][6]['properties']['name']);
+                var city6Link = result['data']['cities']['features'][6]['properties']['wikipedia'];
+                document.getElementById('cityLink6').setAttribute('href',link+city6Link);
                 $('#city06').html(city6);
                 var pop06 = numeral(result['data']['cities']['features'][6]['properties']['population']).format('0,0');
                 $('#pop06').html(pop06);
@@ -728,6 +811,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker6.bindTooltip(city6).openTooltip();
 
                 var city7 = (result['data']['cities']['features'][7]['properties']['name']);
+                var city7Link = result['data']['cities']['features'][7]['properties']['wikipedia'];
+                document.getElementById('cityLink7').setAttribute('href',link+city7Link);
                 $('#city07').html(city7);
                 var pop07 = numeral(result['data']['cities']['features'][7]['properties']['population']).format('0,0');
                 $('#pop07').html(pop07);
@@ -737,6 +822,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker7.bindTooltip(city7).openTooltip();
 
                 var city8 = (result['data']['cities']['features'][8]['properties']['name']);
+                var city8Link = result['data']['cities']['features'][8]['properties']['wikipedia'];
+                document.getElementById('cityLink8').setAttribute('href',link+city8Link);
                 $('#city08').html(city8);
                 var pop08 = numeral(result['data']['cities']['features'][8]['properties']['population']).format('0,0');
                 $('#pop08').html(pop08);
@@ -746,6 +833,8 @@ $('#myModal').on('shown.bs.modal', function () {
                 cityMarker8.bindTooltip(city8).openTooltip();
 
                 var city9 = (result['data']['cities']['features'][9]['properties']['name']);
+                var city9Link = result['data']['cities']['features'][9]['properties']['wikipedia'];
+                document.getElementById('cityLink9').setAttribute('href',link+city9Link);
                 $('#city09').html(city9);
                 var pop09 = numeral(result['data']['cities']['features'][9]['properties']['population']).format('0,0');
                 $('#pop09').html(pop09);
@@ -788,10 +877,47 @@ $('#myModal').on('shown.bs.modal', function () {
                     var m1 = d1.getMinutes();
                     m1 = checkTime(m1);
                     $('#Sunset').html(h1 + ":" + m1)
-
-                    map.spin(false);
-                    
                   }
+                    // wiki info
+                  $.ajax({
+                    url: "PHP/getWikiInfo.php",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                      north: north,
+                      south: south,
+                      east: east,
+                      west: west,
+                    },
+                    success: function(result) {
+    
+                      console.log(result);
+        
+                      if (result.status.name == "ok") {
+                        var link = "http://"        
+                        $('#title0').html(result['data'][0]['title']);
+                        $('#summary0').html(result['data'][0]['summary']);
+                        var link0 = result['data'][0]['wikipediaUrl'];
+                        document.getElementById("link00").setAttribute("href",link+link0);
+                        $('#link0').html(link0);
+
+                        $('#title1').html(result['data'][1]['title']);
+                        $('#summary1').html(result['data'][1]['summary']);
+                        var link1 = result['data'][1]['wikipediaUrl'];
+                        document.getElementById("link01").setAttribute("href",link+link1);
+                        $('#link1').html(link1);
+
+                        $('#title2').html(result['data'][2]['title']);
+                        $('#summary2').html(result['data'][2]['summary']);
+                        var link2 = result['data'][2]['wikipediaUrl'];
+                        document.getElementById("link02").setAttribute("href",link+link2);
+                        $('#link2').html(link2);
+
+                        map.spin(false);
+                           
+                      }
+                    }
+                  })    
                 }
               })
             }
