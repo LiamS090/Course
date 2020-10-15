@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Gazetteer</title>
+        <link rel=icon href="images/favicon.ico">
+        <meta name="keywords" content="country, map, weather, php, api, population">
+        <meta name="description" content="Gazetteer Liam Scott Project">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no">
+        <meta name="author" content="Liam Scott">
+
+        <!--  BOOTStrap  -->
+        <link rel="stylesheet" href="Bootstrap/js/css/bootstrap.css">
+      <!--     LEAFLET      -->
+        <link rel="stylesheet" href="Leaflet/leaflet.css" />
+      <!--     extraMarkers   -->
+      <link rel="stylesheet" href="ExtraMarkers/leaflet.extra-markers.min.css">  
+      <!--  MY CSS  -->
+        <link rel="stylesheet" type="text/css" href="CSS/MyStyles.css">
+
+
+    </head>
+
+  <body onload="init()">
+    
+    <div id="map"></div>
+
+    
+
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" style="color:white;">Gazetteer</a>
+      <form class="form-inline">
+        <select id="countrySel" name="country" class="form-control">
+        </select>
+      </form>
+    </nav>
+<div id="btns">        
+  <button type="button" id="countryBtn" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-sm1">Country Details</button>
+
+  <div class="modal bd-example-modal-sm1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Country Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+
+            <tr>
+              <td>
+                Country:
+              </td>
+              <td id="txtCountry">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Capital City: 
+              </td>
+              <td id="txtCap">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Population: 
+              </td>
+              <td id="txtPop">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Currency code: 
+              </td>
+              <td id="currency">
+              </td>
+            </tr>
+      
+            <tr>
+              <td>
+                Country Code: 
+              </td>
+              <td id="txtCode">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Area (km<sup>2</sup>): 
+              </td>
+              <td id="txtArea">
+              </td>
+            </tr>
+      
+            <tr>
+              <td>
+                Continent:
+              </td>
+              <td id="txtCont">
+              </td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+            <tr>
+              <td>
+                Time:
+              </td>
+              <td id="Time">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                GMT offset:
+              </td>
+              <td id="TimeZone">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Sunrise: 
+              </td>
+              <td id="Sunrise">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Sunset: 
+              </td>
+              <td id="Sunset">
+              </td>
+            </tr>
+          </table>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" id="cityBtn" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-sm2">Major Cities</button>
+
+  <div class="modal fade bd-example-modal-sm2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Major Cities</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>  
+              <td><a id="capLink" target="_blank"><div id="cap"></div></a></td>
+              <td>Population:</td>
+              <td id="capPop"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink1" target="_blank"><div id="city01"></div></a></td>
+              <td>Population:</td>
+              <td id="pop01"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink2" target="_blank"><div id="city02"></div></td>
+              <td>Population:</td>
+              <td id="pop02"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink3" target="_blank"><div id="city03"></div></td>
+              <td>Population:</td>
+              <td id="pop03"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink4" target="_blank"><div id="city04"></div></td>
+              <td>Population:</td>
+              <td id="pop04"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+            <tr>  
+              <td><a id="cityLink5" target="_blank"><div id="city05"></div></td>
+              <td>Population:</td>
+              <td id="pop05"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink6" target="_blank"><div id="city06"></div></td>
+              <td>Population:</td>
+              <td id="pop06"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink7" target="_blank"><div id="city07"></div></td>
+              <td>Population:</td>
+              <td id="pop07"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink8" target="_blank"><div id="city08"></div></td>
+              <td>Population:</td>
+              <td id="pop08"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+
+
+            <tr>
+              <td><a id="cityLink9" target="_blank"><div id="city09"></div></td>
+              <td>Population:</td>
+              <td id="pop09"></td>
+            </tr>
+          </table>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" id="wikiBtn" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg">Wiki Info</button>
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title"><div id="title0"></div></h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+
+              <tr>  
+                <td id="summary0"></td>
+              </tr>
+
+              <tr>
+                <td><br></td>
+              </tr>
+  
+
+              <tr>
+                <td ><a id="link00" target="_blank"><div id="link0"></div></a></td>
+              </tr>
+
+          </table>
+        </div>
+        <div class="modal-header">
+          <h6 class="modal-title"><div id="title1"></div></h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+
+            <tr>  
+              <td id="summary1">.</td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+  
+
+            <tr>  
+              <td ><a id="link01" target="_blank"><div id="link1"></div> </a></td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="modal-header">
+          <h6 class="modal-title"><div id="title2"></div></h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+  
+            <tr> 
+              <td id="summary2"></td>
+            </tr>
+
+            <tr>
+              <td><br></td>
+            </tr>
+  
+            <tr>  
+              <td ><a id="link02" target="_blank"><div id="link2"></div> </a></td>
+            </tr>
+          </table>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      
+      
+
+
+  
+   
+
+      <!--JAVASCRIPT IMPORTS-->
+        <script src="JavaScript/jquery-2.2.3.min.js" type="text/JavaScript"></script>
+        <script src="Bootstrap/js/bootstrap.js" type="text/JavaScript"></script> 
+        <script src="Leaflet/leaflet.js" type="text/JavaScript"></script>
+        <script src="Leaflet/spin.min.js" type="text/JavaScript"></script>
+        <script src="Leaflet/leaflet.spin.min.js" type ="text/JavaScript"></script>
+        <script src="JavaScript/numeral.min.js"></script>
+        <script src="Leaflet/owm.js"></script>
+        <script src="ExtraMarkers/leaflet.extra-markers.min.js"></script>
+        <script src="JavaScript/script.js" type="text/JavaScript"></script>
+
+
+  </body>
+</html>
