@@ -1,0 +1,21 @@
+.loc {
+  float: left;
+}
+
+#locationsBtn {
+  width:100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 0px 0px 10px 10px;
+} 
+
+#departmentBtn {
+  width: 100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 0px 0px 10px 10px;
+}   
+  
+#editorBtn {
+  width:100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 0px 0px;
+}  
