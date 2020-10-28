@@ -1,14 +1,27 @@
+html {
+  font: Verdana;
+}
+
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+
+
 .loc {
   float: left;
 }
 
-#locationsBtn {
+#locationSel {
   width:100%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 0px 0px 10px 10px;
 } 
 
-#departmentBtn {
+#departmentSel {
   width: 100%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 0px 0px 10px 10px;
@@ -18,4 +31,39 @@
   width:100%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px 10px 0px 0px;
-}  
+} 
+
+#logo {
+  margin-top: 5%;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 80vh;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }
+
+tr.classRow {
+  cursor: pointer;
+}
+
+
+td._1, td._2 {
+  width:20%;
+}
+
+td:nth-child(4) {
+  width:25%;
+}
+
+
+@media only screen and (max-width: 617px) {
+  th.col_4,
+  td:nth-child(4) {
+    display:none;
+  }
+}
+
