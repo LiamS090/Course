@@ -15,6 +15,7 @@ var persID;  // new entry person ID
 var departID;  // new entry department ID
 var locaID;  // new entry location ID
 var locaName; // new entry location name
+var letters = /^[A-Za-z]+$/; //validation
 
 //logout function
 var logoutButton = document.getElementById('logout');
@@ -363,24 +364,32 @@ updateFunc.addEventListener('click', function(e) {
   job = document.getElementById('txtJobTitle').value;
   department = document.getElementById('Department').value;
 
-  $.ajax({
-    url: "PHP/update.php",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      personID: personID,
-      fname: fName,
-      lname: lName,
-      email: email,
-      job: job,
-      depID: department,
-    },
-    success: function(result) {
-      console.log(result);
-    }
-  })   
-        // to refresh table
-        location.href = location.href 
+  if(fName.match(letters) && lName.match(letters)) {
+
+    $.ajax({
+      url: "PHP/update.php",
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        personID: personID,
+        fname: fName,
+        lname: lName,
+        email: email,
+        job: job,
+        depID: department,
+      },
+      success: function(result) {
+        console.log(result);
+      }
+    })   
+      // to refresh table
+      location.href = location.href;;
+    return true;
+  }
+  else {
+    $('#invalidModalAlpha').modal('show');
+    return false;
+  } 
 })
 
 
@@ -441,24 +450,31 @@ newPerson.addEventListener('click', function () {
   job = document.getElementById('jobT').value;
   departID = document.getElementById('department').value;
 
+  if(fName.match(letters) && lName.match(letters)) {
 
-  $.ajax({
-    url: "PHP/insertNewP.php",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      depID: departID,
-      fname: fName,
-      lname: lName,
-      email: email,
-      job: job,
-    },
-    success: function(result) {
-      console.log(result);
-    }
-  })    
-      // to refresh table
-      location.href = location.href; 
+    $.ajax({
+      url: "PHP/insertNewP.php",
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        depID: departID,
+        fname: fName,
+        lname: lName,
+        email: email,
+        job: job,
+      },
+      success: function(result) {
+        console.log(result);
+      }
+    })    
+        // to refresh table
+        location.href = location.href;;
+    return true;
+  }
+  else {
+    $('#invalidModalAlpha').modal('show');
+    return false;
+  } 
 })
 
 // creating a new location
@@ -466,22 +482,28 @@ var newLocation = document.getElementById('saveNewLocation');
 newLocation.addEventListener('click', function () {
 
   locaName = document.getElementById('loca').value;
+  if(locaName.match(letters)) {
 
-console.log(locaName);
-  $.ajax({
-    url: "PHP/insertLocation.php",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      name: locaName,
-    },
-    success: function(result) {
-      console.log(result);
-    }
-  })
+    $.ajax({
+      url: "PHP/insertLocation.php",
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        name: locaName,
+      },
+      success: function(result) {
+        console.log(result);
+      }
+    })
        // to refresh table
        location.href = location.href;
-})  
+    return true;
+  }
+  else {
+    $('#invalidModalAlpha').modal('show');
+    return false;
+  } 
+})
 
 // creating a new department
 var newDepartment = document.getElementById('saveNewDepartment');
@@ -489,24 +511,31 @@ newDepartment.addEventListener('click', function () {
 
   locaID = document.getElementById('departmentNewLocation').value;
   department = document.getElementById('depa').value;
-
-  $.ajax({
-    url: "PHP/insertDepartment.php",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      locationID: locaID,
-      name: department,
-    },
-    success: function(result) {
-      console.log(result);
+  if(department.match(letters)) {
 
 
-    }
-  }) 
+    $.ajax({
+      url: "PHP/insertDepartment.php",
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        locationID: locaID,
+        name: department,
+      },
+      success: function(result) {
+        console.log(result);
+      }
+    }) 
+
        // to refresh table
-       location.href = location.href; 
-})  
+       location.href = location.href;
+    return true;
+  }
+  else {
+    $('#invalidModalAlpha').modal('show');
+    return false;
+  } 
+}) 
 
 // hiding edit modal when brining up delete modal
 var hideEditModal = document.getElementById('btnDeleteDepartment');
@@ -541,21 +570,28 @@ updateDepart.addEventListener('click', function(e) {
 
   department = document.getElementById('departmentUpdate').value;
   newLocationId = document.getElementById('editDepartmentLocation').value;
+  if(department.match(letters)) {
 
-  $.ajax({
-    url: "PHP/updateDepartment.php",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      id: department,
-      locationId:newLocationId,
-    },
-      success: function(result) {
-        console.log(result);
-      }
-  }) 
-    // to refresh table
-    location.href = location.href;   
+    $.ajax({
+      url: "PHP/updateDepartment.php",
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        id: department,
+        locationId:newLocationId,
+      },
+        success: function(result) {
+          console.log(result);
+        }
+    }) 
+       // to refresh table
+    location.href = location.href;
+    return true;
+  }
+  else {
+    $('#invalidModalAlpha').modal('show');
+    return false;
+  } 
 })
 
 
