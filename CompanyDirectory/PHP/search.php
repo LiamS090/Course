@@ -30,10 +30,10 @@
 		exit;
 
 	}	
-
+	
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
-
-	$sql='SELECT * FROM personnel WHERE firstName LIKE % "' . $_REQUEST['name1'] . '"%'. 'OR lastName LIKE % "' . $_REQUEST['name2'] . '"%';
+	
+	$sql='SELECT id, firstName, lastName, departmentID, email, jobTitle FROM personnel WHERE firstName LIKE  "%' . $_REQUEST['name1'] . '%"' . ' OR lastName LIKE "%' . $_REQUEST['name2'] . '%"';
 	$result = $conn->query($sql);
 	
 	if (!$result) {
