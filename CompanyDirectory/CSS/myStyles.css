@@ -27,10 +27,15 @@ a {
   border-radius: 0px 0px 10px 10px;
 }   
   
-#editorBtn {
-  width:100%;
+#editBtn {
+  float: right;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 5px 5px 5px 5px;
+} 
+
+#newPersonBtn {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px 5px 5px 5px;
 } 
 
 #logo {
@@ -39,7 +44,7 @@ a {
 
 .my-custom-scrollbar {
   position: relative;
-  height: 80vh;
+  height: 100%;
   overflow: auto;
   }
   .table-wrapper-scroll-y {
@@ -66,4 +71,5 @@ td:nth-child(4) {
     display:none;
   }
 }
+
 
