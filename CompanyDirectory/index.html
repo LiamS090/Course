@@ -185,68 +185,87 @@
       <div role="document" class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title text-center mb-4 mt-0 pt-4">Department and location editor</h4>
-            <br>
+            <h4 class="modal-title text-center mb-4 mt-0 pt-4">Editor</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-            <div class="modal-body p-0">
-              <div class="px-3">
-                <h6 class="text-center mb-4 mt-0 pt-4">New Department</h6>
-                <form>
-                  <div class="form-group">
-                    <label for="Department">Department:</label>
-                    <input type="text" class="form-control" id="depa">
-                  </div>   
-                  <div class="form-group">
-                    <label for="LocationID">Location ID</label>
-                    <select id="departmentNewLocation" name="Location" class="form-control"></select>
-                  </div> 
-                  <button type="button" id="saveNewDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create department</button>
-                </form>
-              </div>
-              <div class="px-3">
-                <h6 class="text-center mb-4 mt-0 pt-4">Edit Department</h6>
-                <form>
-                  <div class="form-group">
+            <ul class="nav nav-pills">
+              <li class="nav-item active"><a class="nav-link active" href="#newDepartment" data-toggle="tab"><div class="tooltip01">1<span class="tooltiptext01">New department</span></div></a></li>
+              <li><a class="nav-link" href="#editDepartment" data-toggle="tab"><div class="tooltip02">2<span class="tooltiptext02">Edit department</span></div></a></li>
+              <li><a class="nav-link" href="#deleteDepartment" data-toggle="tab"><div class="tooltip03">3<span class="tooltiptext03">Delete department</span></div></a></li>
+              <li><a class="nav-link" href="#editLocation" data-toggle="tab"><div class="tooltip04">4<span class="tooltiptext04">Edit location</span></div></a></li>
+            </ul>
+            <div
+            <div class="modal-body p-0">  
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="newDepartment">
+                  <div class="px-3">
+                    <h6 class="text-center mb-4 mt-0 pt-4">New Department</h6>
+                    <form>
+                      <div class="form-group">
+                        <label for="Department">Department:</label>
+                        <input type="text" class="form-control" id="depa">
+                      </div>   
+                      <div class="form-group">
+                        <label for="LocationID">Location ID</label>
+                        <select id="departmentNewLocation" name="Location" class="form-control"></select>
+                      </div> 
+                      <button type="button" id="saveNewDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create department</button>
                     <br>
-                    <label for="Department">Choose Department to Edit:</label>
-                    <select class="form-control" id="departmentUpdate"></select>
-                  </div>  
-                  <div class="form-group">
-                    <label for="LocationID">Location ID</label>
-                    <select id="editDepartmentLocation" name="Location" class="form-control"></select>
-                  </div> 
-                  <button type="button" id="updateDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Save changes</button>
-                </form>
-              </div>
-              <div class="px-3"> 
-                <h6 class="text-center mb-4 mt-0 pt-4">Delete Department</h6> 
-                <form>
-                  <div class="form-group">
-                    <br>
-                    <label for="Department">Choose Department to delete:</label>
-                    <select class="form-control" id="departmentDel"></select>
+                    </form>
                   </div>
-                  <br>
-                  <button type="button" id="btnDeleteDepartment" class="btn btn-danger"><a href="#deleteDepartmentModal" class="trigger-btn" data-toggle="modal">Delete Department</a></button>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="editDepartment">
+                  <div class="px-3">
+                    <h6 class="text-center mb-4 mt-0 pt-4">Edit Department</h6>
+                    <form>
+                      <div class="form-group">
+                        <label for="Department">Choose Department to Edit:</label>
+                        <select class="form-control" id="departmentUpdate"></select>
+                      </div>  
+                      <div class="form-group">
+                        <label for="LocationID">Location ID</label>
+                        <select id="editDepartmentLocation" name="Location" class="form-control"></select>
+                      </div> 
+                      <button type="button" id="updateDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Save changes</button>
+                    <br>
+                    </form>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="deleteDepartment">
+                  <div class="px-3"> 
+                    <h6 class="text-center mb-4 mt-0 pt-4">Delete Department</h6> 
+                    <form>
+                      <div class="form-group">
 
-                </form>
-              </div>    
-              <div class="px-3">
-                <h6 class="text-center mb-4 mt-0 pt-4">New Location</h6>
-                <form>
-                  <div class="form-group">
-                    <label for="Location">Location name:</label>
-                    <input type="text" class="form-control" id="loca">
+                        <label for="Department">Choose Department to delete:</label>
+                        <select class="form-control" id="departmentDel"></select>
+                      </div>
+
+                      <button type="button" id="btnDeleteDepartment" class="btn btn-danger"><a href="#deleteDepartmentModal" class="trigger-btn" data-toggle="modal">Delete Department</a></button>
+                    <br>
+                    </form>
                   </div>
-                    <button type="button" id="saveNewLocation" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create Location</button>
-                </form>
-              </div>
-            </div>  
-            <div class="modal-footer d-flex flex-column justify-content-center border-0">
-            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
+                </div>
+                <div role="tabpanel" class="tab-pane" id="editLocation">
+                  <div class="px-3">
+                    <h6 class="text-center mb-4 mt-0 pt-4">New Location</h6>
+                    <form>
+                      <div class="form-group">
+                        <label for="Location">Location name:</label>
+                        <input type="text" class="form-control" id="loca">
+                      </div>
+                      <button type="button" id="saveNewLocation" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create Location</button>
+                    <br>
+                    </form>
+                  </div>
+                </div>  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
+                </div>
+              </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -264,7 +283,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" id="deleteModalDep">
         <p>Do you really want to delete this department? This process cannot be undone.</p>
         <img src="Images/warning.png">
 			</div>
@@ -286,7 +305,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" id="deleteModalPer">
         <p>Do you really want to delete this personnel? This process cannot be undone.</p>
         <img id="warning" src="Images/warning.png">
 			</div>
@@ -298,7 +317,27 @@
 	</div>
 </div>
 
+<!--  invalid entry modal  -->
 
+<div id="invalidModalAlpha" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">				
+				<h4 class="modal-title">Invalid Entry</h4>	
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+			</div>
+			<div class="modal-body" id="modalAlphaBody">
+        <p>Please ensure you have entered a valid name containing only letters and try again.</p>
+        <img src="Images/cross.png" height="250vh" width="250vw">
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
       <!--JAVASCRIPT IMPORTS-->
       <script src="JS/jquery-2.2.3.min.js" type="text/JavaScript"></script>
