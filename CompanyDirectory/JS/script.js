@@ -60,9 +60,11 @@ $(document).ready(function(){
           value: result.data[index].id,
           text: result.data[index].name
         }));
+
       }); 
       loc = result['data'][0]['name'];
       locId = result['data'][0]['id'];
+      document.getElementById('locationSel').value = locId;
 
 
           //populating departments dropdown and editor in editor
@@ -208,7 +210,10 @@ locMenu.addEventListener('change', function(e) {
 
   if (locationsId == 'All') {
     $('#departmentSel').find('option').remove();
-    document.getElementById('departmentSel').value = 'No Department selected';
+
+    var allOption = $('<option value="0">All</option>');
+    $('#departmentSel').append(allOption);
+
     $.ajax({
       url: "PHP/getAllPersonel.php",
       type: 'POST',
@@ -380,29 +385,22 @@ updateFunc.addEventListener('click', function(e) {
 
 
 // deleting entry from modal after click
-function ConfirmDeletePersonnel()
-{
-
-  var x = confirm("Are you sure you want to delete this personnel?");
-  if (x) {
-    $.ajax({
-      url: "PHP/deletePersonnel.php",
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        personID: personID,
-      },
-        success: function(result) {
-          console.log(result);
-        }
-    }) 
-    // to refresh table
-    location.href = location.href;  
-    return true;
-  }   
-  else
-    return false;
-}
+var deletePersonnel = document.getElementById('deletePersonnelBtn');
+deletePersonnel.addEventListener('click', function () {
+  $.ajax({
+    url: "PHP/deletePersonnel.php",
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      personID: personID,
+    },
+      success: function(result) {
+        console.log(result);
+      }
+  }) 
+  // to refresh table
+  
+})  
 
 // creating search functionailty 
 searchBtn.addEventListener('click', function () {
@@ -418,7 +416,6 @@ searchBtn.addEventListener('click', function () {
     },
 
     success: function(result) {
-      console.log(word1);
            
       for(var i = table.rows.length - 1; i > 0; i--)
      {
@@ -511,13 +508,19 @@ newDepartment.addEventListener('click', function () {
        location.href = location.href; 
 })  
 
+// hiding edit modal when brining up delete modal
+var hideEditModal = document.getElementById('btnDeleteDepartment');
+hideEditModal.addEventListener('click', function () {
+  $('#edit').modal('hide');
+});
+
+
 // deleteing department
-function ConfirmDeleteDepartment()
-{
+var deleteDepartment = document.getElementById('deleteDepartmentBtn');
+deleteDepartment.addEventListener('click', function () {
 
   department = document.getElementById('departmentDel').value;
-  var x = confirm("Are you sure you want to delete?");
-  if (x) {
+
     $.ajax({
       url: "PHP/deleteDepartmentByID.php",
       type: 'POST',
@@ -531,12 +534,7 @@ function ConfirmDeleteDepartment()
     }) 
       // to refresh table
       location.href = location.href;   
-
-      return true;
-  }    
-  else
-    return false;
-}
+})
 // update department
 var updateDepart = document.getElementById('updateDepartment');
 updateDepart.addEventListener('click', function(e) {
