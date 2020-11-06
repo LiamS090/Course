@@ -34,10 +34,7 @@ $(document).ready(function(){
     type: 'POST',
     dataType: 'json',
 
-    success: function(result) {
-
-      console.log(result);
-            
+    success: function(result) {          
        
       $.each(result.data, function(index) {
                  
@@ -76,9 +73,7 @@ $(document).ready(function(){
         data: {},
 
         success: function(result) {
-
-          console.log(result);
-           
+          
           $.each(result.data, function(index) {                  
  
             $('#department').append($("<option>", {
@@ -109,8 +104,6 @@ $(document).ready(function(){
             },
     
             success: function(result) {
-    
-              console.log(result);
                
               $.each(result.data, function(index) {
     
@@ -133,8 +126,7 @@ $(document).ready(function(){
                   depId:depId,
                 },
                 success: function(result) {
-  
-                console.log(result);
+
                 var resultArr = result['data'];
                 resultArr.forEach(function (data) {
 
@@ -170,7 +162,6 @@ depMenu.addEventListener('change', function(e) {
           table.deleteRow(i);
        }
              
-        console.log(result);
         var resultArr = result['data'];
         resultArr.forEach(function (data) {
                
@@ -193,7 +184,6 @@ depMenu.addEventListener('change', function(e) {
         table.deleteRow(i);
      }
            
-      console.log(result);
       var resultArr = result['data'];
       resultArr.forEach(function (data) {
              
@@ -222,8 +212,6 @@ locMenu.addEventListener('change', function(e) {
       data: {},
       success: function(result) {
 
-      console.log(result);
-
       for(var i = table.rows.length - 1; i > 0; i--)
       {
          table.deleteRow(i);
@@ -246,8 +234,6 @@ locMenu.addEventListener('change', function(e) {
       },
 
       success: function(result) {
-
-        console.log(result);
 
         $('#departmentSel').find('option').remove();
       
@@ -274,8 +260,6 @@ locMenu.addEventListener('change', function(e) {
           },
           success: function(result) {
 
-          console.log(result);
-
           for(var i = table.rows.length - 1; i > 0; i--)
           {
              table.deleteRow(i);
@@ -296,8 +280,6 @@ locMenu.addEventListener('change', function(e) {
 $(document).on('click','.classRow',function(){
   personID = $(this).attr("id");
 
-  console.log(personID);
-
   $.ajax({
     url: "PHP/getPersonelByID.php",
     type: 'POST',
@@ -307,7 +289,6 @@ $(document).on('click','.classRow',function(){
     },
 
     success: function(result) {
-      console.log(result);
 
       document.getElementById('txtFirstName').value = result['data'][0]['firstName'];
       document.getElementById('txtLastName').value = result['data'][0]['lastName'];
@@ -338,8 +319,6 @@ locationEdit.addEventListener('change', function(e) {
 
     success: function(result) {
 
-      console.log(result);
-
       $('#DepartmentEdit').find('option').remove();
     
       $.each(result.data, function(index) {
@@ -364,7 +343,7 @@ updateFunc.addEventListener('click', function(e) {
   job = document.getElementById('txtJobTitle').value;
   department = document.getElementById('Department').value;
 
-  if(fName.match(letters) && lName.match(letters)) {
+  if(fName.match(letters) && lName.match(letters) && fName !== "" && lName !== "") {
 
     $.ajax({
       url: "PHP/update.php",
@@ -403,12 +382,10 @@ deletePersonnel.addEventListener('click', function () {
     data: {
       personID: personID,
     },
-      success: function(result) {
-        console.log(result);
-      }
+      success: function(result) {}
   }) 
   // to refresh table
-  
+  location.href = location.href;
 })  
 
 // creating search functionailty 
@@ -450,7 +427,7 @@ newPerson.addEventListener('click', function () {
   job = document.getElementById('jobT').value;
   departID = document.getElementById('department').value;
 
-  if(fName.match(letters) && lName.match(letters)) {
+  if(fName.match(letters) && lName.match(letters) && fName !== "" && lName !== "") {
 
     $.ajax({
       url: "PHP/insertNewP.php",
@@ -464,11 +441,11 @@ newPerson.addEventListener('click', function () {
         job: job,
       },
       success: function(result) {
-        console.log(result);
+
       }
     })    
         // to refresh table
-        location.href = location.href;;
+        location.href = location.href;
     return true;
   }
   else {
@@ -482,7 +459,7 @@ var newLocation = document.getElementById('saveNewLocation');
 newLocation.addEventListener('click', function () {
 
   locaName = document.getElementById('loca').value;
-  if(locaName.match(letters)) {
+  if(locaName.match(letters) && locaName !== "") {
 
     $.ajax({
       url: "PHP/insertLocation.php",
@@ -492,7 +469,7 @@ newLocation.addEventListener('click', function () {
         name: locaName,
       },
       success: function(result) {
-        console.log(result);
+
       }
     })
        // to refresh table
@@ -511,7 +488,8 @@ newDepartment.addEventListener('click', function () {
 
   locaID = document.getElementById('departmentNewLocation').value;
   department = document.getElementById('depa').value;
-  if(department.match(letters)) {
+
+  if(department.match(letters) && department !== "") {
 
 
     $.ajax({
@@ -523,7 +501,7 @@ newDepartment.addEventListener('click', function () {
         name: department,
       },
       success: function(result) {
-        console.log(result);
+
       }
     }) 
 
@@ -558,19 +536,20 @@ deleteDepartment.addEventListener('click', function () {
         id: department,
       },
         success: function(result) {
-          console.log(result);
+
         }
     }) 
       // to refresh table
       location.href = location.href;   
 })
+
 // update department
 var updateDepart = document.getElementById('updateDepartment');
 updateDepart.addEventListener('click', function(e) {
 
   department = document.getElementById('departmentUpdate').value;
   newLocationId = document.getElementById('editDepartmentLocation').value;
-  if(department.match(letters)) {
+  if(department.match(letters) && department !== "") {
 
     $.ajax({
       url: "PHP/updateDepartment.php",
@@ -581,7 +560,7 @@ updateDepart.addEventListener('click', function(e) {
         locationId:newLocationId,
       },
         success: function(result) {
-          console.log(result);
+
         }
     }) 
        // to refresh table
@@ -594,8 +573,71 @@ updateDepart.addEventListener('click', function(e) {
   } 
 })
 
+// changing edit modal from select
+var edit = document.getElementById('editSelect')
+edit.addEventListener('change', function () {
+  if (edit.value == "Edit department") {
+    $('#newDepartment').modal('hide');
+    $('#editDepartment').modal('show');
+  } 
+  if (edit.value == "Delete department") {
+    $('#newDepartment').modal('hide');
+    $('#deleteDepartment').modal('show');
+  }
+  else if (edit.value == "New location") {
+    $('#newDepartment').modal('hide');
+    $('#newLocation').modal('show');
+  }
+});
 
+var edit2 = document.getElementById('editSelect2')
+edit2.addEventListener('change', function () {
+  if (edit2.value == "New department") {
+    $('#editDepartment').modal('hide');
+    $('#newDepartment').modal('show');
+  } 
+  if (edit2.value == "Delete department") {
+    $('#editDepartment').modal('hide');
+    $('#deleteDepartment').modal('show');
+  }
+  else if (edit2.value == "New location") {
+    $('#editDepartment').modal('hide');
+    $('#newLocation').modal('show');
+  }
+});
 
+var edit3 = document.getElementById('editSelect3')
+edit3.addEventListener('change', function () {
+  if (edit3.value == "New department") {
+    $('#deleteDepartment').modal('hide');
+    $('#newDepartment').modal('show');
+  } 
+  if (edit3.value == "Edit department") {
+    $('#deleteDepartment').modal('hide');
+    $('#editDepartment').modal('show');
+  }
+  else if (edit3.value == "New location") {
+    $('#deleteDepartment').modal('hide');
+    $('#newLocation').modal('show');
+  }
+});
+
+var edit4 = document.getElementById('editSelect4')
+edit4.addEventListener('change', function () {
+
+  if (edit4.value == "New department") {
+    $('#newLocation').modal('hide')
+    $('#newDepartment').modal('show');
+  } 
+  if (edit4.value == "Edit department") {
+    $('#newLocation').modal('hide');
+    $('#editDepartment').modal('show');
+  }
+  else if (edit4.value == "Delete department") {
+    $('#newLocation').modal('hide');
+    $('#deleteDepartment').modal('show');
+  }
+});
 
 
 
