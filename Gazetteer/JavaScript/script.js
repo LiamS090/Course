@@ -123,8 +123,7 @@ $('#myModal').on('shown.bs.modal', function () {
         map.spin(true);
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        console.log(lat);
-        console.log(lng);
+
       
    
        // Getting country code from geonames
@@ -138,8 +137,6 @@ $('#myModal').on('shown.bs.modal', function () {
         },
         success: function(result) {
 
-          console.log(result);
-         
           if (result.status.name == "ok") {
             countryCode = (result['data']['countryCode']);
             countryName = (result['data']['countryName']);
@@ -157,12 +154,7 @@ $('#myModal').on('shown.bs.modal', function () {
             data: {
               countryCode: countryCode,
             },
-            success: function(result) {
-
-              console.log(result);
- 
-
-              
+            success: function(result) {              
         
               $.each(result.data, function(index) {
                   
@@ -170,8 +162,7 @@ $('#myModal').on('shown.bs.modal', function () {
                 value: result.data[index].code,
                 text: result.data[index].name
                 }));  
-              });
-              console.log(countryCode);   
+              }); 
               $('#countrySel').val(countryCode);
             }
           })
@@ -190,14 +181,10 @@ $('#myModal').on('shown.bs.modal', function () {
             },
             success: function(result) {
               
-      
-              console.log(result);
               north = result['data'][0]['north'];
               south = result['data'][0]['south'];
               east = result['data'][0]['east'];
               west = result['data'][0]['west'];
-              console.log(north);
-
 
               if (result.status.name == "ok") {
                 
@@ -222,8 +209,6 @@ $('#myModal').on('shown.bs.modal', function () {
                   countryName : countryName,
                 },
                 success: function(result) {
-                
-                  console.log(result);
 
                   if (result.status.name == "ok") {
                                     
@@ -250,9 +235,6 @@ $('#myModal').on('shown.bs.modal', function () {
                     countryCode: countryCode,
                   },
                     success: function(result) {
-          
-                      console.log(result);
-                      console.log(countryCode);
 
                       if (result.status.name == "ok") {
                     
@@ -379,8 +361,6 @@ $('#myModal').on('shown.bs.modal', function () {
                           lng: lng
                         },
                         success: function(result) {
-  
-                          console.log(result);
 
                           function checkTime(i) {
                             if (i < 10) {
@@ -417,8 +397,6 @@ $('#myModal').on('shown.bs.modal', function () {
                               west: west,
                             },
                             success: function(result) {
-      
-                              console.log(result);
         
                               if (result.status.name == "ok") {
                                 var link = "http://"        
@@ -475,7 +453,6 @@ $('#myModal').on('shown.bs.modal', function () {
                               } else {
                                   msg = 'Uncaught Error.\n' + jqXHR.responseText;
                               }
-                              console.log(msg);
                             }  
                           })
                         }
@@ -502,8 +479,6 @@ $('#myModal').on('shown.bs.modal', function () {
     map.spin(true);
     lat = e.latlng.lat;
     lng = e.latlng.lng;
-    console.log(lat);
-    console.log(lng);
 
     $.ajax({
       url: "PHP/getCountryCode.php",
@@ -514,9 +489,7 @@ $('#myModal').on('shown.bs.modal', function () {
         lng : lng
       },
       success: function(result) {
-
-        console.log(result);
-     
+   
         if (result.status.name == "ok") {
           countryCode = (result['data']['countryCode']);
           $('#countrySel').val(countryCode);
@@ -533,12 +506,10 @@ $('#myModal').on('shown.bs.modal', function () {
           },
           success: function(result) {
     
-            console.log(result);
             north = result['data'][0]['north'];
             south = result['data'][0]['south'];
             east = result['data'][0]['east'];
             west = result['data'][0]['west'];
-            console.log(north);
             countryName = result['data'][0]['countryName'];
     
             if (result.status.name == "ok") {
@@ -555,8 +526,6 @@ $('#myModal').on('shown.bs.modal', function () {
               $('#base').html(result['data'][0]['currencyCode']);
             }
             
-            console.log(countryName);
-
             $.ajax({
               url: "PHP/countryBorder.php",
               type: 'POST',
@@ -566,8 +535,6 @@ $('#myModal').on('shown.bs.modal', function () {
               },
               success: function(result) {
               
-                console.log(result);
-
                 if (result.status.name == "ok") {
                                   
                   if (map.hasLayer(border)) {
@@ -583,9 +550,7 @@ $('#myModal').on('shown.bs.modal', function () {
                   map.fitBounds(border.getBounds());
 
                 }  
-
-                console.log(countryCode)
-            
+          
                 $.ajax({
                   url: "PHP/cityFromCountryCode.php",
                   type: 'POST',
@@ -595,8 +560,6 @@ $('#myModal').on('shown.bs.modal', function () {
                   },
                   success: function(result) {
                     
-                    console.log(result);
-
                     if (result.status.name == "ok") {
 
                       var link = "http://"
@@ -721,8 +684,6 @@ $('#myModal').on('shown.bs.modal', function () {
                       },
                       success: function(result) {
   
-                        console.log(result);
-
                         function checkTime(i) {
                           if (i < 10) {
                             i = "0" + i;
@@ -758,8 +719,6 @@ $('#myModal').on('shown.bs.modal', function () {
                             west: west,
                           },
                           success: function(result) {
-    
-                            console.log(result);
         
                             if (result.status.name == "ok") {
                               var link = "http://"        
@@ -845,12 +804,10 @@ $('#myModal').on('shown.bs.modal', function () {
         },
         success: function(result) {
   
-          console.log(result);
           north = result['data'][0]['north'];
           south = result['data'][0]['south'];
           east = result['data'][0]['east'];
           west = result['data'][0]['west'];
-          console.log(north);
           countryName = result['data'][0]['countryName'];
           countryCode = (result['data'][0]['countryCode']);
   
@@ -878,8 +835,6 @@ $('#myModal').on('shown.bs.modal', function () {
             },
             success: function(result) {
             
-              console.log(result);
-
               if (result.status.name == "ok") {
                                 
                 if (map.hasLayer(border)) {
@@ -904,9 +859,7 @@ $('#myModal').on('shown.bs.modal', function () {
                   countryCode: countryCode,
                 },
                 success: function(result) {
-      
-                  console.log(result);
-                  console.log(countryCode);
+
                   if (result.status.name == "ok") {
        
                     var link = "http://"
@@ -1032,8 +985,6 @@ $('#myModal').on('shown.bs.modal', function () {
                     },
                     success: function(result) {
   
-                      console.log(result);
- 
                       function checkTime(i) {
                         if (i < 10) {
                           i = "0" + i;
@@ -1068,9 +1019,7 @@ $('#myModal').on('shown.bs.modal', function () {
                           west: west,
                         },
                         success: function(result) {
-    
-                          console.log(result);
-        
+          
                           if (result.status.name == "ok") {
                             var link = "http://"        
                             $('#title0').html(result['data'][0]['title']);
