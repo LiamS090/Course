@@ -116,46 +116,12 @@ li a:hover {
   color: block;
 }
 
-.tooltip01,
-.tooltip02,
-.tooltip03,
-.tooltip04 {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
 
-/* Tooltip text */
-.tooltiptext01,
-.tooltiptext02,
-.tooltiptext03,
-.tooltiptext04 {
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
+#D {
+  border-radius: 0;
+  bottom:50px;
+  position:absolute;
+  width:100%;
   text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  width: 120px;
-  bottom: 100%;
-  margin-left: -60px;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip01:hover .tooltiptext01 {
-  visibility: visible;
-}
-
-.tooltip02:hover .tooltiptext02 {
-  visibility: visible;
-}
-
-.tooltip03:hover .tooltiptext03 {
-  visibility: visible;
-}
-
-.tooltip04:hover .tooltiptext04 {
-  visibility: visible;
-}
