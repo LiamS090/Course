@@ -15,7 +15,7 @@ var persID;  // new entry person ID
 var departID;  // new entry department ID
 var locaID;  // new entry location ID
 var locaName; // new entry location name
-var letters = /^[A-Za-z]+$/; //validation
+var letters = /^[a-zA-Z\s]*$/; //validation
 
 //logout function
 var logoutButton = document.getElementById('logout');
