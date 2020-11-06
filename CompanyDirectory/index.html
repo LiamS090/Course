@@ -23,7 +23,7 @@
         Company Directory
       </a>
       <form class="form-inline my-2 my-lg-0" >
-        <input class="form-control mr-sm-2" type="search" placeholder="Search name" aria-label="Search" id="searchBox">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for name" aria-label="Search" id="searchBox">
         <button class="btn btn-success my-2 my-sm-0 mx-1" type="button" id="searchBtn">Search</button>
         <button class="btn btn-dark my-2 my-sm-0 mx-1" id="logout" type="button">
           <span class="glyphicon glyphicon-log-out"></span><a href="./PHP/logout.php">logout</a></button>
@@ -48,7 +48,7 @@
 <!-- modal btns  --> 
    
   <button class="btn btn-outline-success my-2 my-sm-0 mx-1" type="button" id="newPersonBtn" data-toggle="modal" data-target=".createNewPerson">New Personnel</button>
-  <button class="btn btn-outline-success my-2 my-sm-0 mx-1" type="button" id="editBtn" data-toggle="modal" data-target=".edit">Edit</button>
+  <button class="btn btn-outline-success my-2 my-sm-0 mx-1" type="button" id="editBtn" data-toggle="modal" data-target=".newDepartment">Maintenance</button>
   <br>
 
 <!--  table  -->  
@@ -177,99 +177,175 @@
   </div> 
 
 
-<!--  Editting Locations and Departments  -->
+<!--  new department  -->
 <div class="container">
-  <div class="row justify-content-center"> 
-    <!-- Modal-->
-    <div id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left edit">
+  <div class="row justify-content-center">
+    <div id="newDepartment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal text-left newDepartment">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">        
+            <h4 class="modal-title text-center mb-4 mt-0 pt-4">New department</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <select class="form-control" id="editSelect">
+            <option value="" selected disabled>Please select</option>
+            <option><a class="nav-link" value="editDepartment">Edit department</a></option>
+            <option><a class="nav-link" value="deleteDepartment">Delete department</a></option>
+            <option><a class="nav-link" value="newLocation">New location</a></option>
+          </select>
+          <br>
+          <div class="modal-body p-0" id="newDepartment">  
+            <div class="px-3">
+              <form>
+                <div class="form-group">
+                  <label for="Department">Department:</label>
+                  <input type="text" class="form-control" id="depa">
+                </div>   
+                <div class="form-group">
+                  <label for="LocationID">Location ID</label>
+                  <select id="departmentNewLocation" name="Location" class="form-control"></select>
+                </div> 
+                <button type="button" id="saveNewDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create department</button>
+                <br>
+              </form>
+            </div>
+          </div> 
+          <div class="modal-footer" id="D">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- Modal editDepartment-->
+<div class="container">
+  <div class="row justify-content-center">    
+    <div id="editDepartment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal text-left editDepartment">
       <div role="document" class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title text-center mb-4 mt-0 pt-4">Editor</h4>
+            <h4 class="modal-title text-center mb-4 mt-0 pt-4">Edit department</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-            <ul class="nav nav-pills">
-              <li class="nav-item active"><a class="nav-link active" href="#newDepartment" data-toggle="tab"><div class="tooltip01">1<span class="tooltiptext01">New department</span></div></a></li>
-              <li><a class="nav-link" href="#editDepartment" data-toggle="tab"><div class="tooltip02">2<span class="tooltiptext02">Edit department</span></div></a></li>
-              <li><a class="nav-link" href="#deleteDepartment" data-toggle="tab"><div class="tooltip03">3<span class="tooltiptext03">Delete department</span></div></a></li>
-              <li><a class="nav-link" href="#editLocation" data-toggle="tab"><div class="tooltip04">4<span class="tooltiptext04">Edit location</span></div></a></li>
-            </ul>
-            <div
-            <div class="modal-body p-0">  
-              <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="newDepartment">
-                  <div class="px-3">
-                    <h6 class="text-center mb-4 mt-0 pt-4">New Department</h6>
-                    <form>
-                      <div class="form-group">
-                        <label for="Department">Department:</label>
-                        <input type="text" class="form-control" id="depa">
-                      </div>   
-                      <div class="form-group">
-                        <label for="LocationID">Location ID</label>
-                        <select id="departmentNewLocation" name="Location" class="form-control"></select>
-                      </div> 
-                      <button type="button" id="saveNewDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create department</button>
-                    <br>
-                    </form>
-                  </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="editDepartment">
-                  <div class="px-3">
-                    <h6 class="text-center mb-4 mt-0 pt-4">Edit Department</h6>
-                    <form>
-                      <div class="form-group">
-                        <label for="Department">Choose Department to Edit:</label>
-                        <select class="form-control" id="departmentUpdate"></select>
-                      </div>  
-                      <div class="form-group">
-                        <label for="LocationID">Location ID</label>
-                        <select id="editDepartmentLocation" name="Location" class="form-control"></select>
-                      </div> 
-                      <button type="button" id="updateDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Save changes</button>
-                    <br>
-                    </form>
-                  </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="deleteDepartment">
-                  <div class="px-3"> 
-                    <h6 class="text-center mb-4 mt-0 pt-4">Delete Department</h6> 
-                    <form>
-                      <div class="form-group">
-
-                        <label for="Department">Choose Department to delete:</label>
-                        <select class="form-control" id="departmentDel"></select>
-                      </div>
-
-                      <button type="button" id="btnDeleteDepartment" class="btn btn-danger"><a href="#deleteDepartmentModal" class="trigger-btn" data-toggle="modal">Delete Department</a></button>
-                    <br>
-                    </form>
-                  </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="editLocation">
-                  <div class="px-3">
-                    <h6 class="text-center mb-4 mt-0 pt-4">New Location</h6>
-                    <form>
-                      <div class="form-group">
-                        <label for="Location">Location name:</label>
-                        <input type="text" class="form-control" id="loca">
-                      </div>
-                      <button type="button" id="saveNewLocation" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create Location</button>
-                    <br>
-                    </form>
-                  </div>
+          <select class="form-control" id="editSelect2">
+            <option value="" selected disabled>Please select</option>
+            <option><a class="nav-link" value="newDepartment">New department</a></option>
+            <option><a class="nav-link" value="deleteDepartment">Delete department</a></option>
+            <option><a class="nav-link" value="newLocation">New location</a></option>
+          </select>
+          <br>
+          <div class="modal-body p-0" id="editDepartment">
+            <div class="px-3">
+              <form>
+                <div class="form-group">
+                  <label for="Department">Choose Department to Edit:</label>
+                  <select class="form-control" id="departmentUpdate"></select>
                 </div>  
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
-                </div>
-              </div>  
+                <div class="form-group">
+                  <label for="LocationID">Location ID</label>
+                  <select id="editDepartmentLocation" name="Location" class="form-control"></select>
+                </div> 
+                <button type="button" id="updateDepartment" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Save changes</button>
+                <br>
+              </form>
             </div>
+          </div>
+          <div class="modal-footer" id="D">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+  </div>
+</div>      
+    
+    <!-- Modal deleteDepartment-->
+<div class="container">
+  <div class="row justify-content-center">    
+    <div id="deleteDepartment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal text-left deleteDepartment">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-center mb-4 mt-0 pt-4">Delete department</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <select class="form-control" id="editSelect3">
+            <option value="" selected disabled>Please select</option>
+            <option><a class="nav-link" value="newDepartment">New department</a></option>
+            <option><a class="nav-link" value="editDepartment">Edit department</a></option>
+            <option><a class="nav-link" value="newLocation">New location</a></option>
+          </select>
+          <br>
+          <div class="modal-body p-0" id="deleteDepartment">
+            <div class="px-3">
+              <form>
+                <div class="form-group">
+                  <label for="Department">Choose Department to delete:</label>
+                  <select class="form-control" id="departmentDel"></select>
+                </div>
+
+                <button type="button" id="btnDeleteDepartment" class="btn btn-danger"><a href="#deleteDepartmentModal" class="trigger-btn" data-toggle="modal">Delete Department</a></button>
+                <br>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer" id="D">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>       
+
+<!--  Modal newLocation  -->
+<div class="container">
+  <div class="row justify-content-center">    
+    <div id="newLocation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal text-left newLocation">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-center mb-4 mt-0 pt-4">New Location</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <select class="form-control" id="editSelect4">
+            <option value="" selected disabled>Please select</option>
+            <option><a class="nav-link" value="newDepartment">New department</a></option>
+            <option><a class="nav-link" value="editDepartment">Edit department</a></option>
+            <option><a class="nav-link" value="deleteDepartment">Delete department</a></option>
+          </select>
+          <br>
+          <div class="modal-body p-0" id="newLocation">
+            <div class="px-3">
+              <form>
+                <div class="form-group">
+                  <label for="Location">Location name:</label>
+                  <input type="text" class="form-control" id="loca">
+                </div>
+                <button type="button" id="saveNewLocation" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm3" data-dismiss="modal">Create Location</button>
+                <br>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer" id="D">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>   
+          </div>
+        </div>
+      </div>
+    </div> 
   </div>
 </div>
 

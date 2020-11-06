@@ -28,13 +28,13 @@
             <h6>Enter your username and password <br>
             username = Username <br>
             password = Password </h6></label><br>
-          <input type="text" class="form-control w-25 p-3" id="user" aria-describedby="emailHelp" placeholder="username">
+          <input type="text" class="form-control w-25 p-3" id="userid" aria-describedby="emailHelp" placeholder="username">
         </div>
         <div class="form-group">
 
-          <input type="password" class="form-control w-25 p-3" id="pass" placeholder="password">
+          <input type="password" class="form-control w-25 p-3" id="pswrd" placeholder="password">
         </div>
-        <button type="submit" class="btn btn-primary" id="login" >Log in</button>
+        <button type="submit" class="btn btn-primary" onclick="check(this.form)" >Log in</button>
       </form>
   </div>      
 
@@ -45,6 +45,18 @@
 
   <script src="JS/jquery-2.2.3.min.js" type="text/JavaScript"></script>
   <script src="JS/bootstrap.js" type="text/JavaScript"></script>
-  <script src="JS/loginScript.js" type="text/JavaScript"></script>
 
-</html>  
+  <script>
+  function check(form) {
+    if(form.userid.value == "Username" && form.pswrd.value == "Password")
+      {
+        window.open('index.html');
+      }
+    else
+      {
+        alert("Error incorrect Username or Password")/*displays error message*/
+      }
+  }
+  </script>
+
+</html> 
