@@ -1,0 +1,303 @@
+html {
+  margin: 10px 25px;
+  background-color: grey;
+}
+
+#myBody {
+  background-color: grey;
+}
+
+h1 {
+  color: black !important;
+  text-decoration: underline !important;
+  text-align: center !important;
+}
+
+.container1 {
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 100%;
+
+}
+
+img.laptopPic{
+  z-index: -1;
+  width: 100%;
+}
+
+img.headshotPic {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  z-index: 1;
+  position: absolute;
+  bottom: 100px;
+  right: 150px;
+}
+
+.textIntro {
+  position: absolute;
+  bottom: 50px;
+  right: 150px;
+  z-index: 0;
+}
+@media screen and (min-width: 300px) {
+  .textIntro {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 16px; 
+  } 
+  img.headshotPic {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 85px;
+    right: 100px;
+  } 
+  #skillsText {
+    font-size: 12px;
+  } 
+  #project {
+    font-size: 12px;
+  }
+  #aboutText {
+    font-size: 12px;
+  }
+  #textContact {
+    font-size: 12px;
+  }
+  
+}
+
+@media screen and (min-width: 400px) {
+  .textIntro {
+    position: absolute;
+    bottom: 8px;
+    left: 1px;
+    font-size: 14px; 
+  } 
+  img.headshotPic {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 125px;
+    right: 50px;
+  } 
+  #skillsText {
+    font-size: 14px;
+  } 
+  #project {
+    font-size: 14px;
+  }
+  #aboutText {
+    font-size: 14px;
+  }
+  #textContact {
+    font-size:14px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .textIntro {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 14px; 
+  } 
+  img.headshotPic {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 100px;
+    right: 75px;
+  } 
+  #skillsText {
+    font-size: 14px;
+  } 
+  #project {
+    font-size: 14px;
+  }
+  #aboutText {
+    font-size: 14px;
+  }
+  #textContact {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .textIntro {
+    position: absolute;
+    bottom: 40px;
+    right: 105px;
+    font-size: 16px;
+  } 
+  img.headshotPic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 250px;
+    right: 145px;
+  } 
+  #skillsText {
+    font-size: 16px;
+  } 
+  #project {
+    font-size: 16px;
+  }
+  #aboutText {
+    font-size: 16px;
+  }
+  #textContact {
+    font-size: 16px;
+  }
+}
+
+
+@media screen and (min-width: 850px) {
+  .textIntro {
+    position: absolute;
+    bottom: 50px;
+    left: 25px;
+    font-size: 20px;
+  }
+  img.headshotPic {
+    height: 180px;
+    width: 180px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 350px;
+    right: 200px;
+  }   
+  #skillsText {
+    font-size: 20px;
+  } 
+  #project {
+    font-size: 20px;
+  }
+  #aboutText {
+    font-size: 20px;
+  }
+  #textContact {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .textIntro {
+    position: absolute;
+    bottom: 75px;
+    right: 250px;
+    font-size: 22px;
+  } 
+  img.headshotPic {
+    height: 250px;
+    width: 250px;
+    border-radius: 50px;
+    z-index: 1;
+    position: absolute;
+    bottom: 550px;
+    right: 300px;
+  }
+  #skillsText {
+    font-size: 22px;
+  } 
+  #project {
+    font-size: 22px;
+  }
+  #aboutText {
+    font-size: 22px;
+  }
+  #textContact {
+    font-size: 22px;
+  }
+}
+
+#skillsText {
+  text-align: center;
+  color: white;
+}
+
+#skillsDiv img {
+  width: 150px;
+  height: 150px;
+  margin: auto;    
+  display: block;
+  padding: 10px;
+}
+
+#border01 {
+  border-style: double none none none;
+  border-width: medium;
+  border-color: #292b2c;
+}
+
+#pros {
+  list-style-type: none;
+  }
+  
+#project {
+  color: white;
+  font-size: 35px; 
+  display: block;
+  padding: 10px;
+  text-align: center;
+}  
+
+#project:hover {
+  color: darkorange;
+  text-decoration: underline;
+}
+
+#aboutText {
+  margin: 5%;
+  text-align: center;
+  color: white;
+  background-image: url('/portfolio/pictures/aboutMePic1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+
+#textContact {
+  text-align: center;
+  color: white;
+}  
+
+#contact {
+  text-align: center;
+  text-decoration: underline;
+} 
+
+#email {
+  color: darkorange;
+}
+
+#sendBtn {
+  position: absolute;
+  right: 47%;
+}
+
+#topBtn {
+  position: absolute;
+  right: 50px;
+  border-radius: 10px;
+}
+
+#centerForm {
+  width:60%;
+  margin:auto;
+}
